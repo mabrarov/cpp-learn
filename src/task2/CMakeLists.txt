@@ -12,4 +12,8 @@ endif()
 
 add_executable(task2 "src/main.cpp")
 
+target_compile_features(task2 PRIVATE cxx_lambdas)
+
 target_compile_definitions(task2 PRIVATE ${compile_definitions})
+
+target_link_libraries(task2 PRIVATE Cpp_learn::task2_lib)

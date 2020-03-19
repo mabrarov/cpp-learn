@@ -276,6 +276,16 @@ switch (${env:TOOLCHAIN}) {
   }
 }
 
+$env:COVERAGE_BUILD = (${env:COVERAGE_BUILD_CANDIDATE} -eq "1") `
+  -and (${env:CONFIGURATION} -eq "Debug") `
+  -and (${env:PLATFORM} -eq "x64")
+if ((${env:COVERAGE_BUILD} -eq "True") -and `
+ -not (Test-Path -Path env:CODECOV_TOKEN) -or (${env:CODECOV_TOKEN} -eq "")) {
+  throw "CODECOV_TOKEN environment variable is not defined but is required to upload coverage report to Codecov"
+}
+$env:CODECOV_FLAG = "windows_${env:OS_VERSION}__${env:PLATFORM}__${env:TOOLCHAIN_ID}"
+$env:CODECOV_FLAG = "${env:CODECOV_FLAG}" -replace "[\.-]", "_"
+
 Write-Host "PLATFORM                  : ${env:PLATFORM}"
 Write-Host "CONFIGURATION             : ${env:CONFIGURATION}"
 Write-Host "TOOLCHAIN_ID              : ${env:TOOLCHAIN_ID}"
@@ -296,6 +306,27 @@ Write-Host "APPVEYOR_BUILD_FOLDER     : ${env:APPVEYOR_BUILD_FOLDER}"
 Write-Host "ARTIFACT_PATH_SUFFIX      : ${env:ARTIFACT_PATH_SUFFIX}"
 Write-Host "CMAKE_GENERATOR           : ${env:CMAKE_GENERATOR}"
 Write-Host "CMAKE_GENERATOR_PLATFORM  : ${env:CMAKE_GENERATOR_PLATFORM}"
+Write-Host "COVERAGE_BUILD            : ${env:COVERAGE_BUILD}"
+Write-Host "CODECOV_FLAG              : ${env:CODECOV_FLAG}"
+if (${env:COVERAGE_BUILD} -eq "True") {
+  Write-Host "COBERTURA_COVERAGE_FILE   : ${env:COBERTURA_COVERAGE_FILE}"
+}
+
+if (${env:COVERAGE_BUILD} -eq "True") {
+  Write-Host "Installing OpenCppCoverage from Chocolatey package"
+  appveyor-retry choco install -y --no-progress opencppcoverage
+  if (${LastExitCode} -ne 0) {
+    throw "Installation of OpenCppCoverage Chocolatey package failed with ${LastExitCode} exit code"
+  }
+  Write-Host "OpenCppCoverage installed"
+
+  Write-Host "Installing Codecov from pip package"
+  pip install --disable-pip-version-check --retries "${env:PIP_RETRY}" codecov=="${env:CODECOV_VERSION}"
+  if (${LastExitCode} -ne 0) {
+    throw "Installation of Codecov pip package failed with exit code ${LastExitCode}"
+  }
+  Write-Host "Codecov installed"
+}
 
 if (Test-Path env:MSVS_PATCH_FOLDER) {
   Set-Location -Path "${env:MSVS_PATCH_FOLDER}"

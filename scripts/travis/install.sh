@@ -58,3 +58,16 @@ if [[ -n "${CMAKE_VERSION+x}" ]]; then
     fi
   fi
 fi
+
+COVERAGE_BUILD=0
+if [[ "${COVERAGE_BUILD_CANDIDATE}" -ne 0 ]]; then
+  COVERAGE_BUILD=1
+fi
+export COVERAGE_BUILD
+
+if [[ "${COVERAGE_BUILD}" -ne 0 ]]; then
+  echo "Installing Codecov from pip package"
+  travis_retry pip3 install --user --upgrade pip
+  pip3 install --user --retries "${PIP_RETRY}" codecov=="${CODECOV_VERSION}"
+  echo "Codecov installed"
+fi

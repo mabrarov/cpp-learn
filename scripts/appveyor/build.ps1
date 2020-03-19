@@ -9,6 +9,9 @@ switch (${env:RUNTIME_LINKAGE}) {
   "static" {
     $generate_cmd = "${generate_cmd} -D CMAKE_USER_MAKE_RULES_OVERRIDE=""${env:APPVEYOR_BUILD_FOLDER}\cmake\static_c_runtime_overrides.cmake"" -D CMAKE_USER_MAKE_RULES_OVERRIDE_CXX=""${env:APPVEYOR_BUILD_FOLDER}\cmake\static_cxx_runtime_overrides.cmake"""
   }
+  default {
+    $generate_cmd = "${generate_cmd} -D gtest_force_shared_crt=ON"
+  }
 }
 if (${env:TOOLCHAIN} -eq "mingw") {
   $generate_cmd = "${generate_cmd} -D CMAKE_BUILD_TYPE=""${env:CONFIGURATION}"""

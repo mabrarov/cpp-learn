@@ -7,6 +7,7 @@ cache:
 
 env:
   global:
+    - COVERAGE_BUILD_CANDIDATE: '0'
     - DEPENDENCIES_HOME: '${HOME}/dependencies'
     - DOWNLOADS_HOME: '${HOME}/downloads'
     - BUILD_HOME: '${TRAVIS_BUILD_DIR}/build'
@@ -19,10 +20,10 @@ env:
 
 matrix:
   include:
-    # Default GCC (GCC 7.4 on Ubuntu Bionic)
+    # Default GCC (GCC 7.4 on Ubuntu Bionic). Used for test coverage.
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc CXX_COMPILER=g++ BUILD_TYPE=DEBUG'
+      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc CXX_COMPILER=g++ BUILD_TYPE=DEBUG COVERAGE_BUILD_CANDIDATE=1'
       compiler: 'gcc'
       addons: &apt-gcc
         apt:
@@ -40,7 +41,7 @@ matrix:
       env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc CXX_COMPILER=g++ BUILD_TYPE=RELEASE'
       compiler: 'gcc'
       addons: *apt-gcc
-    # GCC 9
+    # GCC 9. Used for collecting information about test coverage.
     - os: 'linux'
       dist: 'bionic'
       env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-9 CXX_COMPILER=g++-9 BUILD_TYPE=RELEASE'
