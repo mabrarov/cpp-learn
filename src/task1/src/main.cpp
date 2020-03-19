@@ -10,7 +10,7 @@ int _tmain() {
 #else
 int main() {
 #endif
-  int prev;
+  int prev = 0;
   int count = 0;
   int max = 0;
   while (true) {
@@ -18,11 +18,6 @@ int main() {
     std::cin >> n;
     if (0 == n) {
       break;
-    }
-    if (0 == count) {
-      count = 1;
-      prev = n;
-      continue;
     }
     if (n == prev) {
       ++count;
