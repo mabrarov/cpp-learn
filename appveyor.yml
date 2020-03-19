@@ -63,3 +63,5 @@ test_script:
 artifacts:
   - path: 'build\src\task1$(ARTIFACT_PATH_SUFFIX)*.exe'
     name: 'task1'
+  - path: 'build\src\task2$(ARTIFACT_PATH_SUFFIX)*.exe'
+    name: 'task2'
