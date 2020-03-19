@@ -12,6 +12,4 @@ endif()
 
 add_executable(task1 "src/main.cpp")
 
-target_compile_features(task1 PRIVATE cxx_auto_type)
-
 target_compile_definitions(task1 PRIVATE ${compile_definitions})
