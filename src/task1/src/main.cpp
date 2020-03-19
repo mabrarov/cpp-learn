@@ -10,12 +10,13 @@ int _tmain() {
 #else
 int main() {
 #endif
-  int n, prev;
+  int prev;
   int count = 0;
   int max = 0;
   while (true) {
+    int n;
     std::cin >> n;
-    if (n == 0) {
+    if (0 == n) {
       break;
     }
     if (0 == count) {
