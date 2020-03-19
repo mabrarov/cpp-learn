@@ -27,6 +27,7 @@ int main() {
         continue;
       }
       max_seven_mult = (std::max)(max_seven_mult, n);
+      continue;
     }
     max_non_seven_mult = (std::max)(max_non_seven_mult, n);
   }
