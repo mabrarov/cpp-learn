@@ -22,14 +22,11 @@ int main() {
       std::cerr << "Only non-negative integer numbers allowed. Got: " << n << std::endl;
       return EXIT_FAILURE;
     }
-    if (n % 7 == 0) {
-      if (n % 49 == 0) {
-        continue;
-      }
+    if (n % 7 != 0) {
+      max_non_seven_mult = (std::max)(max_non_seven_mult, n);
+    } else if (n % 49 != 0) {
       max_seven_mult = (std::max)(max_seven_mult, n);
-      continue;
     }
-    max_non_seven_mult = (std::max)(max_non_seven_mult, n);
   }
   if (0 == max_seven_mult || 0 == max_non_seven_mult) {
     std::cout << 1;
