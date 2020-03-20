@@ -7,7 +7,8 @@ namespace cpp_learn {
 namespace task2 {
 
 std::function<int()> generator(int values[]) {
-  return [n = 0, values]() mutable { return values[n++]; };
+  int n = 0;
+  return [n, values]() mutable { return values[n++]; };
 }
 
 TEST(solve, no_items) {
