@@ -2,10 +2,9 @@
 #include <stdexcept>
 #include <string>
 #include <istream>
-#include <input_reader.hpp>
+#include <istream_reader.hpp>
 
-std::function<int()>
-cpp_learn::input_reader::istream_reader(std::istream& istream) {
+std::function<int()> cpp_learn::input::istream_reader(std::istream& istream) {
   return [&istream]() -> int {
     std::string line;
     std::getline(istream, line);

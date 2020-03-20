@@ -75,5 +75,5 @@ artifacts:
     name: 'task1_test'
   - path: 'build\tests\task2_test$(ARTIFACT_PATH_SUFFIX)*.exe'
     name: 'task2_test'
-  - path: 'build\tests\input_reader_test$(ARTIFACT_PATH_SUFFIX)*.exe'
-    name: 'input_reader_test'
+  - path: 'build\tests\input_test$(ARTIFACT_PATH_SUFFIX)*.exe'
+    name: 'input_test'

@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <cstdlib>
 #include <iostream>
-#include <input_reader.hpp>
+#include <istream_reader.hpp>
 #include <task2_lib.hpp>
 
 #if defined(WIN32)
@@ -14,7 +14,7 @@ int _tmain() {
 int main() {
 #endif
   try {
-    auto input = cpp_learn::input_reader::istream_reader(std::cin);
+    auto input = cpp_learn::input::istream_reader(std::cin);
     std::cout << cpp_learn::task2::solve(input);
     return EXIT_SUCCESS;
   } catch (const std::exception& e) {

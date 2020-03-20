@@ -3,10 +3,10 @@
 #include <iostream>
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
-#include <input_reader.hpp>
+#include <istream_reader.hpp>
 
 namespace cpp_learn {
-namespace input_reader {
+namespace input {
 
 TEST(istream_reader, no_lines) {
   std::stringstream stream("\n");
