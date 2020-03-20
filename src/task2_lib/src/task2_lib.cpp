@@ -6,7 +6,7 @@
 int cpp_learn::task2::solve(std::function<int()>& input_generator) {
   int max_seven_mult = 0, max_non_seven_mult = 0;
   while (true) {
-    const int n = input_generator();
+    auto n = input_generator();
     if (0 == n) {
       break;
     }

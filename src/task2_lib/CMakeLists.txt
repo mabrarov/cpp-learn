@@ -10,6 +10,8 @@ add_library(task2_lib STATIC "include/task2_lib.hpp" "src/task2_lib.cpp")
 
 add_library(Cpp_learn::task2_lib ALIAS task2_lib)
 
+target_compile_features(task1_lib PRIVATE cxx_auto_type)
+
 target_compile_definitions(task2_lib PUBLIC ${compile_definitions})
 
 target_include_directories(task2_lib PUBLIC "include")

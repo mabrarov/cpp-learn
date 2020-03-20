@@ -6,7 +6,7 @@ int cpp_learn::task1::solve(std::function<int()>& input_generator) {
   int count = 0;
   int max = 0;
   while (true) {
-    const int n = input_generator();
+    auto n = input_generator();
     if (0 == n) {
       break;
     }

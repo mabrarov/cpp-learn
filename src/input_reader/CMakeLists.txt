@@ -10,6 +10,8 @@ add_library(input_reader STATIC "include/input_reader.hpp" "src/input_reader.cpp
 
 add_library(Cpp_learn::input_reader ALIAS input_reader)
 
+target_compile_features(input_reader PRIVATE cxx_auto_type cxx_range_for)
+
 target_compile_definitions(input_reader PUBLIC ${compile_definitions})
 
 target_include_directories(input_reader PUBLIC "include")

@@ -1,7 +1,5 @@
 #if defined(WIN32)
-
 #include <tchar.h>
-
 #endif
 
 #include <stdexcept>
@@ -11,10 +9,9 @@
 #include <task1_lib.hpp>
 
 #if defined(WIN32)
-
 int _tmain() {
 #else
-  int main() {
+int main() {
 #endif
   try {
     auto input = cpp_learn::input_reader::istream_reader(std::cin);
