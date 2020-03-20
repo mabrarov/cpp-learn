@@ -12,7 +12,7 @@ int cpp_learn::task2::solve(std::function<int()>& input_generator) {
     }
     if (n < 0) {
       throw std::invalid_argument(
-          "Only non-negative integer numbers allowed. Got: "
+          "Only non-negative integer numbers allowed, but got: "
               + std::to_string(n));
     }
     if (n % 7 != 0) {

@@ -1,4 +1,5 @@
 #include <functional>
+#include <stdexcept>
 #include <gtest/gtest.h>
 #include <task2_lib.hpp>
 

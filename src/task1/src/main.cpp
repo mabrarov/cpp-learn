@@ -1,21 +1,29 @@
 #if defined(WIN32)
+
 #include <tchar.h>
+
 #endif
 
+#include <stdexcept>
+#include <cstdlib>
 #include <iostream>
-#include <functional>
+#include <input_reader.hpp>
 #include <task1_lib.hpp>
 
 #if defined(WIN32)
+
 int _tmain() {
 #else
-int main() {
+  int main() {
 #endif
-  std::function<int()> input_generator = []() {
-    int n;
-    std::cin >> n;
-    return n;
-  };
-  std::cout << cpp_learn::task1::solve(input_generator);
-  return 0;
+  try {
+    auto input = cpp_learn::input_reader::istream_reader(std::cin);
+    std::cout << cpp_learn::task1::solve(input);
+    return EXIT_SUCCESS;
+  } catch (const std::exception& e) {
+    std::cerr << e.what();
+  } catch (...) {
+    std::cerr << "Unknown error happened";
+  }
+  return EXIT_FAILURE;
 }
