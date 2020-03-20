@@ -3,7 +3,10 @@ project(task1_test)
 
 add_executable(task1_test "src/task1_test.cpp")
 
-target_compile_features(task1_test PRIVATE cxx_lambdas cxx_auto_type)
+target_compile_features(task1_test PRIVATE
+    cxx_lambdas
+    cxx_auto_type
+    cxx_lambda_init_captures)
 
 target_link_libraries(task1_test
     PRIVATE
