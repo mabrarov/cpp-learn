@@ -10,7 +10,7 @@ add_library(input STATIC "include/istream_reader.hpp" "src/istream_reader.cpp")
 
 add_library(Cpp_learn::input ALIAS input)
 
-target_compile_features(input PRIVATE cxx_auto_type cxx_range_for)
+target_compile_features(input PRIVATE cxx_lambdas cxx_auto_type cxx_range_for)
 
 target_compile_definitions(input PUBLIC ${compile_definitions})
 
