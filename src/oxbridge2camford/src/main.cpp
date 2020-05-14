@@ -16,7 +16,7 @@ int main() {
     int test_number;
     std::cin >> test_number;
     if (test_number <= 1 || test_number >= 500) {
-      throw std::invalid_argument("Number of test should be > 1 and < 500");
+      throw std::invalid_argument("Number of tests should be > 1 and < 500");
     }
     for (; test_number > 0; --test_number) {
       int oxbridge_average;
