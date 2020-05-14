@@ -19,9 +19,9 @@ int main() {
       throw std::invalid_argument("Number of test should be > 1 and < 500");
     }
     for (; test_number > 0; --test_number) {
-      int average_oxbridge;
-      std::cin >> average_oxbridge;
-      if (average_oxbridge < 60 || test_number > 100) {
+      int oxbridge_average;
+      std::cin >> oxbridge_average;
+      if (oxbridge_average < 60 || test_number > 100) {
         throw std::invalid_argument("Average Oxbridge mark should be >= 60 and <= 100");
       }
       int items_number;
@@ -31,10 +31,10 @@ int main() {
       }
       std::cout
           << cpp_learn::oxbridge2camford::find_min_camford_sum(
-              average_oxbridge, items_number) / 10.0 / items_number
+              oxbridge_average, items_number) / 10.0 / items_number
           << ' '
           << cpp_learn::oxbridge2camford::find_max_camford_sum(
-              average_oxbridge, items_number) / 10.0 / items_number
+              oxbridge_average, items_number) / 10.0 / items_number
           << '\n';
     }
     std::cout << std::flush;
