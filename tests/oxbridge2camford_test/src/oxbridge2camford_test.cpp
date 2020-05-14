@@ -141,5 +141,21 @@ TEST(find_max_camford_sum, nine_items) {
   ASSERT_EQ(300, find_max_camford_sum(77, 9));
 }
 
+TEST(find_max_camford_sum, max_oxbridge_for_min_camford) {
+  ASSERT_EQ(400, find_max_camford_sum(85, 10));
+}
+
+TEST(find_max_camford_sum, max_oxbridge) {
+  ASSERT_EQ(400, find_max_camford_sum(100, 10));
+}
+
+TEST(find_min_camford_sum, max_oxbridge_for_min_camford) {
+  ASSERT_EQ(200, find_min_camford_sum(69, 10));
+}
+
+TEST(find_min_camford_sum, min_oxbridge) {
+  ASSERT_EQ(200, find_min_camford_sum(60, 10));
+}
+
 }
 }

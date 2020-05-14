@@ -50,8 +50,13 @@ int find_min(int oxbridge_sum, int n) {
     return oxbridge_to_camford_dict[oxbridge_sum - min_oxbridge];
   }
 
-  const int max_possible_oxbridge =
-      (std::min)(max_oxbridge, oxbridge_sum - min_oxbridge * (n - 1));
+  if ((oxbridge_sum + n - 1) / n <= max_oxbridge_for_min_camford) {
+    return min_camford * n;
+  }
+
+  const int max_possible_oxbridge = (std::max)(min_oxbridge,
+      (std::min)(max_oxbridge,
+          oxbridge_sum - max_oxbridge_for_min_camford * (n - 1)));
   const int min_possible_oxbridge =
       (std::max)(min_oxbridge, oxbridge_sum - max_oxbridge * (n - 1));
   const int min_possible_camford =
@@ -83,8 +88,13 @@ int find_max(int oxbridge_sum, int n) {
     return oxbridge_to_camford_dict[oxbridge_sum - min_oxbridge];
   }
 
-  const int min_possible_oxbridge =
-      (std::max)(min_oxbridge, oxbridge_sum - max_oxbridge * (n - 1));
+  if (oxbridge_sum / n >= min_oxbridge_for_max_camford) {
+    return max_camford * n;
+  }
+
+  const int min_possible_oxbridge = (std::min)(max_oxbridge,
+      (std::max)(min_oxbridge,
+          oxbridge_sum - min_oxbridge_for_max_camford * (n - 1)));
   const int max_possible_oxbridge =
       (std::min)(max_oxbridge, oxbridge_sum - min_oxbridge * (n - 1));
   const int max_possible_camford =
