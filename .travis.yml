@@ -23,7 +23,11 @@ matrix:
     # Default GCC (GCC 7.4 on Ubuntu Bionic). Used for test coverage.
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc CXX_COMPILER=g++ BUILD_TYPE=DEBUG COVERAGE_BUILD_CANDIDATE=1'
+      env:
+        - C_COMPILER: 'gcc'
+        - CXX_COMPILER: 'g++'
+        - BUILD_TYPE: 'DEBUG'
+        - COVERAGE_BUILD_CANDIDATE: '1'
       compiler: 'gcc'
       addons: &apt-gcc
         apt:
@@ -38,13 +42,19 @@ matrix:
             - sourceline: 'ppa:ubuntu-toolchain-r/test'
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc CXX_COMPILER=g++ BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'gcc'
+        - CXX_COMPILER: 'g++'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'gcc'
       addons: *apt-gcc
     # GCC 9. Used for collecting information about test coverage.
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-9 CXX_COMPILER=g++-9 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'gcc-9'
+        - CXX_COMPILER: 'g++-9'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'gcc'
       addons: &apt-gcc9
         apt:
@@ -58,13 +68,19 @@ matrix:
           sources: *gcc-package-sources
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-9 CXX_COMPILER=g++-9 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'gcc-9'
+        - CXX_COMPILER: 'g++-9'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'gcc'
       addons: *apt-gcc9
     # GCC 8
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-8 CXX_COMPILER=g++-8 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'gcc-8'
+        - CXX_COMPILER: 'g++-8'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'gcc'
       addons: &apt-gcc8
         apt:
@@ -78,13 +94,19 @@ matrix:
           sources: *gcc-package-sources
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-8 CXX_COMPILER=g++-8 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'gcc-8'
+        - CXX_COMPILER: 'g++-8'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'gcc'
       addons: *apt-gcc8
     # GCC 6
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-6 CXX_COMPILER=g++-6 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'gcc-6'
+        - CXX_COMPILER: 'g++-6'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'gcc'
       addons: &apt-gcc6
         apt:
@@ -98,13 +120,19 @@ matrix:
           sources: *gcc-package-sources
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=gcc C_COMPILER=gcc-6 CXX_COMPILER=g++-6 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'gcc-6'
+        - CXX_COMPILER: 'g++-6'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'gcc'
       addons: *apt-gcc6
     # Clang 9.0
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-9 CXX_COMPILER=clang++-9 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'clang-9'
+        - CXX_COMPILER: 'clang++-9'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'clang'
       addons: &apt-clang9
         apt:
@@ -120,13 +148,19 @@ matrix:
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-9 CXX_COMPILER=clang++-9 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'clang-9'
+        - CXX_COMPILER: 'clang++-9'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'clang'
       addons: *apt-clang9
     # Clang 8.0
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-8 CXX_COMPILER=clang++-8 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'clang-8'
+        - CXX_COMPILER: 'clang++-8'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'clang'
       addons: &apt-clang8
         apt:
@@ -141,13 +175,19 @@ matrix:
             - 'llvm-toolchain-bionic-8'
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-8 CXX_COMPILER=clang++-8 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'clang-8'
+        - CXX_COMPILER: 'clang++-8'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'clang'
       addons: *apt-clang8
     # Clang 7.0
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-7 CXX_COMPILER=clang++-7 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'clang-7'
+        - CXX_COMPILER: 'clang++-7'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'clang'
       addons: &apt-clang7
         apt:
@@ -162,13 +202,19 @@ matrix:
             - 'llvm-toolchain-bionic-7'
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-7 CXX_COMPILER=clang++-7 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'clang-7'
+        - CXX_COMPILER: 'clang++-7'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'clang'
       addons: *apt-clang7
     # Clang 6.0
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-6.0 CXX_COMPILER=clang++-6.0 BUILD_TYPE=RELEASE'
+      env:
+        - C_COMPILER: 'clang-6.0'
+        - CXX_COMPILER: 'clang++-6.0'
+        - BUILD_TYPE: 'RELEASE'
       compiler: 'clang'
       addons: &apt-clang6
         apt:
@@ -183,7 +229,10 @@ matrix:
             - 'llvm-toolchain-bionic-6.0'
     - os: 'linux'
       dist: 'bionic'
-      env: 'CXX_COMPILER_FAMILY=clang C_COMPILER=clang-6.0 CXX_COMPILER=clang++-6.0 BUILD_TYPE=DEBUG'
+      env:
+        - C_COMPILER: 'clang-6.0'
+        - CXX_COMPILER: 'clang++-6.0'
+        - BUILD_TYPE: 'DEBUG'
       compiler: 'clang'
       addons: *apt-clang6
 
