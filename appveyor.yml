@@ -16,7 +16,7 @@ environment:
   COVERAGE_WORK_FOLDER: '%APPVEYOR_BUILD_FOLDER%\build\coverage'
   COBERTURA_COVERAGE_FILE: '%APPVEYOR_BUILD_FOLDER%\build\coverage\coverage.xml'
   VSWHERE_URL: 'https://github.com/Microsoft/vswhere/releases/download'
-  VSWHERE_VERSION: '2.8.4'
+  VSWHERE_VERSION: '3.1.7'
   VSWHERE_DIST_NAME: 'vswhere.exe'
   COVERAGE_BUILD_CANDIDATE: '0'
   COVERAGE_ARTIFACT_NAME: 'coverage'
@@ -25,9 +25,13 @@ environment:
   CURL_RETRY: '10'
   CURL_RETRY_DELAY: '10'
   PIP_RETRY: '10'
-  CODECOV_VERSION: '2.1.7'
+  CODECOV_VERSION: '2.1.13'
 
   matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2022'
+      TOOLCHAIN: 'msvc'
+      MSVC_VERSION: '14.3'
+      RUNTIME_LINKAGE: 'static'
     - TOOLCHAIN: 'msvc'
       MSVC_VERSION: '14.2'
       RUNTIME_LINKAGE: 'static'
