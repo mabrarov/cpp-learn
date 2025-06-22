@@ -91,3 +91,5 @@ artifacts:
     name: 'input_test'
   - path: 'build\tests\oxbridge2camford_test$(ARTIFACT_PATH_SUFFIX)*.exe'
     name: 'oxbridge2camford_test'
+  - path: 'build\src\automatic_storage$(ARTIFACT_PATH_SUFFIX)*.exe'
+    name: 'automatic_storage'
